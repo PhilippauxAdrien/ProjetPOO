@@ -1,5 +1,5 @@
 CREATE TABLE `projetpoo`.`user` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL auto_increment,
   `firstname` VARCHAR(45) NOT NULL,
   `lastname` VARCHAR(45) NOT NULL,
   `email` VARCHAR(100) NULL,
@@ -14,6 +14,7 @@ CREATE TABLE `projetpoo`.`fee` (
   `amount` DOUBLE NOT NULL,
   `date` DATETIME NULL,
   `iduser` INT NOT NULL,
+  `status` INT NULL,
   PRIMARY KEY (`id`),
   INDEX `iduserfk_idx` (`iduser` ASC),
   CONSTRAINT `iduserfk`
