@@ -1,68 +1,95 @@
 package com.javatpoint.beans;
 
 public class AccountantBean {
-private int id;
-private String name,email,password,address,contact;
 
-public AccountantBean() {
-	super();
-	// TODO Auto-generated constructor stub
-}
+    private int id;
+    private String firstname, lastname, email, password, address, role;
 
-public AccountantBean(String name, String email, String password, String address, String contact) {
-	super();
-	this.name = name;
-	this.email = email;
-	this.password = password;
-	this.address = address;
-	this.contact = contact;
-}
+    public AccountantBean() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
-public AccountantBean(int id, String name, String email, String password, String address, String contact) {
-	super();
-	this.id = id;
-	this.name = name;
-	this.email = email;
-	this.password = password;
-	this.address = address;
-	this.contact = contact;
-}
+    public AccountantBean(String firstname, String lastname, String email, String password, String address, String role) {
+        super();
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.password = password;
+        this.address = address;
+        this.role = role;
+    }
 
-public int getId() {
-	return id;
-}
-public void setId(int id) {
-	this.id = id;
-}
-public String getName() {
-	return name;
-}
-public void setName(String name) {
-	this.name = name;
-}
-public String getEmail() {
-	return email;
-}
-public void setEmail(String email) {
-	this.email = email;
-}
-public String getPassword() {
-	return password;
-}
-public void setPassword(String password) {
-	this.password = password;
-}
-public String getAddress() {
-	return address;
-}
-public void setAddress(String address) {
-	this.address = address;
-}
-public String getContact() {
-	return contact;
-}
-public void setContact(String contact) {
-	this.contact = contact;
-}
+     public AccountantBean(int id, String firstname, String lastname, String email, String password, String address, String role) {
+        super();
+        this.id = id;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.password = password;
+        this.address = address;
+        this.role = role;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return "AccountantBean{" + "id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", email=" + email + ", password=" + password + ", address=" + address + ", role=" + role + '}';
+    }
 
 }

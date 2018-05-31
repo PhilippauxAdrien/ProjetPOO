@@ -20,13 +20,14 @@ public class EditAccountant extends HttpServlet {
 		PrintWriter out=response.getWriter();
 		
 		int id=Integer.parseInt(request.getParameter("id"));
-		String name=request.getParameter("name");
+		String firstname=request.getParameter("firstname");
+                String lastname=request.getParameter("lastname");
 	 	String email=request.getParameter("email");
 		String password=request.getParameter("password");
 		String address=request.getParameter("address");
-		String contact=request.getParameter("contact");
+		String role=request.getParameter("role");
 		
-		AccountantBean bean=new AccountantBean(id,name, email, password, address, contact);
+		AccountantBean bean=new AccountantBean(id, firstname, lastname, email, password, address, role);
 		AccountantDao.update(bean);
 		response.sendRedirect("ViewAccountant");
 		

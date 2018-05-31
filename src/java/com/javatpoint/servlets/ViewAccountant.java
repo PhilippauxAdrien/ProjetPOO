@@ -33,9 +33,9 @@ public class ViewAccountant extends HttpServlet {
 	
 		List<AccountantBean> list=AccountantDao.getAllRecords();
 		out.println("<table class='table table-bordered table-striped'>");
-		out.print("<tr><th>Id</th><th>Name</th><th>Email</th><th>Password</th><th>address</th><th>contact</th><th>Edit</th><th>Delete</th>");
+		out.print("<tr><th>Id</th><th>Firstname</th><th>Lastname</th><th>Email</th><th>Password</th><th>address</th><th>Role</th><th>Edit</th><th>Delete</th>");
 		for(AccountantBean bean:list){
-			out.print("<tr><td>"+bean.getId()+"</td><td>"+bean.getName()+"</td><td>"+bean.getEmail()+"</td><td>"+bean.getPassword()+"</td><td>"+bean.getAddress()+"</td><td>"+bean.getContact()+"</td><td><a href='EditAccountantForm?id="+bean.getId()+"'>Edit</a></td><td><a href='DeleteAccountant?id="+bean.getId()+"'>Delete</a></td></tr>");
+			out.print("<tr><td>"+bean.getId()+"</td><td>"+bean.getFirstname()+"</td><td>"+bean.getLastname()+"</td><td>"+bean.getEmail()+"</td><td>"+bean.getPassword()+"</td><td>"+bean.getAddress()+"</td><td>"+bean.getRole()+"</td><td><a href='EditAccountantForm?id="+bean.getId()+"'>Edit</a></td><td><a href='DeleteAccountant?id="+bean.getId()+"'>Delete</a></td></tr>");
 		}
 		out.println("</table>");
 			

@@ -30,13 +30,14 @@ public class AddAccountant extends HttpServlet {
 		request.getRequestDispatcher("navadmin.html").include(request, response);
 		out.println("<div class='container'>");
 		
-		String name=request.getParameter("name");
+		String firstname=request.getParameter("firstname");
+                String lastname=request.getParameter("lastname");
 	 	String email=request.getParameter("email");
 		String password=request.getParameter("password");
 		String address=request.getParameter("address");
-		String contact=request.getParameter("contact");
+		String role=request.getParameter("role");
 		
-		AccountantBean bean=new AccountantBean(name, email, password, address, contact);
+		AccountantBean bean=new AccountantBean(firstname, lastname, email, password, address, role);
 		int status=AccountantDao.save(bean);
 		
 		out.print("<h1>Add Accountant Form</h1>");

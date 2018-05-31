@@ -39,11 +39,12 @@ public class EditAccountantForm extends HttpServlet {
 		out.print("<form action='EditAccountant' method='post'>");
 		out.print("<table>");
 		out.print("<tr><td><input type='hidden' name='id' value='"+bean.getId()+"' /></td></tr>");
-		out.print("<tr><td>Name:</td><td><input type='text' name='name' value='"+bean.getName()+"'/></td></tr>");
+		out.print("<tr><td>Name:</td><td><input type='text' name='firstname' value='"+bean.getFirstname()+"'/></td></tr>");
+                out.print("<tr><td>Name:</td><td><input type='text' name='lastname' value='"+bean.getLastname()+"'/></td></tr>");
 		out.print("<tr><td>Email:</td><td><input type='email' name='email' value='"+bean.getEmail()+"'/></td></tr>");
 		out.print("<tr><td>Password:</td><td><input type='text' name='password' value='"+bean.getPassword()+"'/></td></tr>");
 		out.print("<tr><td>Address:</td><td><textarea name='address' style='width:300px;height:100px;'>"+bean.getAddress()+"</textarea></td></tr>");
-		out.print("<tr><td>Contact No:</td><td><input type='text' name='contact' value='"+bean.getContact()+"'/></td></tr>");
+		out.print("<tr><td>Contact No:</td><td><input type='text' name='role' value='"+bean.getRole()+"'/></td></tr>");
 		out.print("<tr><td colspan='2' align='center'><input type='submit' value='Update Accountant' class='btn btn-default'/></td></tr>");
 		out.print("</table>");
 		out.print("</form>");
