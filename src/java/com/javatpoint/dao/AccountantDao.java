@@ -1,15 +1,13 @@
 package com.javatpoint.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.javatpoint.beans.AccountantBean;
-import com.javatpoint.beans.StudentBean;
-import utils.Constants;
+import utils.Role;
 
 public class AccountantDao {
 	
@@ -38,7 +36,8 @@ public static boolean validate(String email,String password){
 		PreparedStatement ps=con.prepareStatement("select * from user where email=? and password=? and role=?");
 		ps.setString(1,email);
 		ps.setString(2,password);
-                ps.setString(3, Constants.ACCOUNTANT);
+                ps.setString(3, Role.ACCOUNTANT.getValue());
+                System.out.println(ps.toString());
 		ResultSet rs=ps.executeQuery();
 		status=rs.next();
 		con.close();
@@ -85,7 +84,7 @@ public static List<AccountantBean> getAllRecords(){
 	try{
 		Connection con=DB.getCon();
 		PreparedStatement ps=con.prepareStatement("select * from user where role=?");
-                ps.setString(1, Constants.ACCOUNTANT);
+                ps.setString(1, Role.ACCOUNTANT.getValue());
 		ResultSet rs=ps.executeQuery();
 		while(rs.next()){
 			AccountantBean bean=new AccountantBean();

@@ -31,6 +31,7 @@ public class AccountantLogin extends HttpServlet {
 		
 		String email=request.getParameter("email");
 		String password=request.getParameter("password");
+                System.out.println("connexion en tant que : " + email + " password: " + password);
 		boolean status=AccountantDao.validate(email, password);
 		if(status){
 			HttpSession session=request.getSession();
