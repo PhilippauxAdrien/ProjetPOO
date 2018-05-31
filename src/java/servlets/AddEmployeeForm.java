@@ -8,15 +8,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-@WebServlet("/SearchStudentForm")
-public class SearchStudentForm extends HttpServlet {
+import javax.servlet.http.HttpSession;
+@WebServlet("/AddEmployeeForm")
+public class AddEmployeeForm extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
+		
 		out.println("<!DOCTYPE html>");
 		out.println("<html>");
 		out.println("<head>");
-		out.println("<title>Search Student Form</title>");
+		out.println("<title>Add Employee</title>");
 		out.println("<link rel='stylesheet' href='resources/bootstrap.min.css'/>");
 		out.println("<link rel='stylesheet' href='style.css'/>");
 		out.println("</head>");
@@ -24,7 +26,15 @@ public class SearchStudentForm extends HttpServlet {
 		request.getRequestDispatcher("navaccountant.html").include(request, response);
 		out.println("<div class='container'>");
 		
-		request.getRequestDispatcher("SearchStudentForm.html").include(request, response);
+		
+		HttpSession session=request.getSession(false);
+		
+		if(session==null||session.getAttribute("accountant")==null){
+			out.println("<h1>Not Accountant!</h1>");
+			request.getRequestDispatcher("AccountantLoginForm.html").include(request, response);
+		}else{
+			request.getRequestDispatcher("AddEmployeeForm.html").include(request, response);
+		}
 		
 		out.println("</div>");
 		request.getRequestDispatcher("footer.html").include(request, response);
@@ -33,4 +43,5 @@ public class SearchStudentForm extends HttpServlet {
 		
 		out.close();
 	}
+
 }

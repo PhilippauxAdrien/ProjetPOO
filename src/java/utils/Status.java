@@ -9,13 +9,13 @@ package utils;
  *
  * @author adrie
  */
-public enum Role {
-    ADMIN("ADMIN", "1"), ACCOUNTANT("ACCOUNTANT", "2"), EMPLOYEE("EMPLOYEE", "3");
+public enum Status {
+     ACCEPTE("ACCEPTE", "3"), REJETE("REJETE", "2"), ENCOURS("EN COURS", "1");
 
     private final String key;
     private final String value;
 
-    Role(String key, String value) {
+    Status(String key, String value) {
         this.key = key;
         this.value = value;
     }
@@ -27,12 +27,12 @@ public enum Role {
         return value;
     }
     
-    public static Role findByValue(String role){
-        for(Role r : values()){
-            if( r.getValue().equals(role)){
-                return r;
-            }
+    public static Status findByValue(String status){
+    for(Status s : values()){
+        if( s.getValue().equals(status)){
+            return s;
         }
-        return null;
     }
+    return null;
+}
 }

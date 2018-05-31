@@ -12,15 +12,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import beans.StudentBean;
 import dao.StudentDao;
-@WebServlet("/ViewStudent")
-public class ViewStudent extends HttpServlet {
+@WebServlet("/ViewEmployee")
+public class ViewEmployee extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
 		out.println("<!DOCTYPE html>");
 		out.println("<html>");
 		out.println("<head>");
-		out.println("<title>View Student</title>");
+		out.println("<title>View Employee</title>");
 		out.println("<link rel='stylesheet' href='resources/bootstrap.min.css'/>");
 		out.println("<link rel='stylesheet' href='style.css'/>");
 		out.println("</head>");
@@ -28,7 +28,7 @@ public class ViewStudent extends HttpServlet {
 		request.getRequestDispatcher("navaccountant.html").include(request, response);
 		out.println("<div class='container'>");
 		
-		out.print("<h1>View Students</h1>");
+		out.print("<h1>View Employees</h1>");
 	
 		List<StudentBean> list=StudentDao.getAllRecords();
 		out.println("<table class='table table-bordered table-striped'>");

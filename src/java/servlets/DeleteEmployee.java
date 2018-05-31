@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.StudentDao;
-@WebServlet("/DeleteStudent")
-public class DeleteStudent extends HttpServlet {
+@WebServlet("/DeleteEmployee")
+public class DeleteEmployee extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String srollno=request.getParameter("rollno");
 		int rollno=Integer.parseInt(srollno);
 		StudentDao.delete(rollno);
-		response.sendRedirect("ViewStudent");
+		response.sendRedirect("ViewEmployee");
 	}
 }

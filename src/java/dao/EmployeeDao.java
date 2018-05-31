@@ -82,38 +82,64 @@ public static int delete(int id){
 	return status;
 }
 
-public static List<EmployeeBean> getAllRecords(){
-	List<EmployeeBean> list=new ArrayList<EmployeeBean>();
-	try{
-		Connection con=DB.getCon();
-		PreparedStatement ps=con.prepareStatement("select * from user where role=?");
-                ps.setString(1, Role.EMPLOYEE.getValue());
-		ResultSet rs=ps.executeQuery();
-		while(rs.next()){
-			EmployeeBean bean=new EmployeeBean();
-			bean.setId(rs.getInt(1));
-			bean.setFirstname(rs.getString(2));
-			bean.setLastname(rs.getString(3));
-			bean.setEmail(rs.getString(4));
-			bean.setPassword(rs.getString(5));
-			bean.setAddress(rs.getString(6));
-                        bean.setRole(rs.getString(7));
-			list.add(bean);
-		}
-		con.close();
-	}catch(Exception ex){
-            System.out.println(ex);
-        }
-	
-	return list;
-}
+    public static List<EmployeeBean> getAllRecords(){
+            List<EmployeeBean> list=new ArrayList<EmployeeBean>();
+            try{
+                    Connection con=DB.getCon();
+                    PreparedStatement ps=con.prepareStatement("select * from user where role=?");
+                    ps.setString(1, Role.EMPLOYEE.getValue());
+                    ResultSet rs=ps.executeQuery();
+                    while(rs.next()){
+                            EmployeeBean bean=new EmployeeBean();
+                            bean.setId(rs.getInt(1));
+                            bean.setFirstname(rs.getString(2));
+                            bean.setLastname(rs.getString(3));
+                            bean.setEmail(rs.getString(4));
+                            bean.setPassword(rs.getString(5));
+                            bean.setAddress(rs.getString(6));
+                            bean.setRole(rs.getString(7));
+                            list.add(bean);
+                    }
+                    con.close();
+            }catch(Exception ex){
+                System.out.println(ex);
+            }
 
-public static EmployeeBean getRecordById(int id){
+            return list;
+    }
+
+    public static EmployeeBean getRecordById(int id){
+            EmployeeBean bean=new EmployeeBean();
+            try{
+                    Connection con=DB.getCon();
+                    PreparedStatement ps=con.prepareStatement("select * from user where id=?");
+                    ps.setInt(1,id);
+                    ResultSet rs=ps.executeQuery();
+                    while(rs.next()){
+                            bean.setId(rs.getInt(1));
+                            bean.setFirstname(rs.getString(2));
+                            bean.setLastname(rs.getString(3));
+                            bean.setEmail(rs.getString(4));
+                            bean.setPassword(rs.getString(5));
+                            bean.setAddress(rs.getString(6));
+                            bean.setRole(rs.getString(7));
+                    }
+                    con.close();
+            }catch(Exception ex){
+                System.out.println(ex);
+            }
+
+            return bean;
+    }
+    
+    public static EmployeeBean getRecordByLastName(String name){
 	EmployeeBean bean=new EmployeeBean();
 	try{
 		Connection con=DB.getCon();
-		PreparedStatement ps=con.prepareStatement("select * from user where id=?");
-		ps.setInt(1,id);
+		PreparedStatement ps=con.prepareStatement("select * from user where firstname LIKE ? OR lastname LIKE ?");
+		ps.setString(1, "%"+name+"%");
+                ps.setString(2, "%"+name+"%");
+
 		ResultSet rs=ps.executeQuery();
 		while(rs.next()){
 			bean.setId(rs.getInt(1));
@@ -130,5 +156,5 @@ public static EmployeeBean getRecordById(int id){
         }
 	
 	return bean;
-}
+    }
 }
