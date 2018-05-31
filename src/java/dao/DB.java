@@ -1,4 +1,4 @@
-package com.javatpoint.dao;
+package dao;
 import java.sql.*;
 public class DB {
     

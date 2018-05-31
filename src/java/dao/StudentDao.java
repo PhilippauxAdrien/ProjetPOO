@@ -1,6 +1,6 @@
-package com.javatpoint.dao;
+package dao;
 
-import com.javatpoint.beans.StudentBean;
+import beans.StudentBean;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

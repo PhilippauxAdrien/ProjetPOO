@@ -1,4 +1,4 @@
-package com.javatpoint.beans;
+package beans;
 
 public class StudentBean {
 private int rollno;

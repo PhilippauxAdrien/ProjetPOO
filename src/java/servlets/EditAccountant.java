@@ -1,4 +1,4 @@
-package com.javatpoint.servlets;
+package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.javatpoint.beans.AccountantBean;
-import com.javatpoint.beans.StudentBean;
-import com.javatpoint.dao.AccountantDao;
-import com.javatpoint.dao.StudentDao;
+import beans.AccountantBean;
+import beans.StudentBean;
+import dao.AccountantDao;
+import dao.StudentDao;
 @WebServlet("/EditAccountant")
 public class EditAccountant extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

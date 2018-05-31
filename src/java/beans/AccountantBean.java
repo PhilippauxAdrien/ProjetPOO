@@ -1,4 +1,4 @@
-package com.javatpoint.beans;
+package beans;
 
 public class AccountantBean {
 
