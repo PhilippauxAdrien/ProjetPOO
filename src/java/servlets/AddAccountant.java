@@ -13,6 +13,7 @@ import beans.AccountantBean;
 import beans.StudentBean;
 import dao.AccountantDao;
 import dao.StudentDao;
+import utils.Role;
 
 @WebServlet("/AddAccountant")
 public class AddAccountant extends HttpServlet {
@@ -35,9 +36,8 @@ public class AddAccountant extends HttpServlet {
 	 	String email=request.getParameter("email");
 		String password=request.getParameter("password");
 		String address=request.getParameter("address");
-		String role=request.getParameter("role");
 		
-		AccountantBean bean=new AccountantBean(firstname, lastname, email, password, address, role);
+		AccountantBean bean=new AccountantBean(firstname, lastname, email, password, address, Role.ACCOUNTANT.getValue());
 		int status=AccountantDao.save(bean);
 		
 		out.print("<h1>Add Accountant Form</h1>");

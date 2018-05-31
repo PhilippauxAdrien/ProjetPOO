@@ -11,9 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import beans.AccountantBean;
-import beans.StudentBean;
 import dao.AccountantDao;
-import dao.StudentDao;
+import utils.Role;
 @WebServlet("/ViewAccountant")
 public class ViewAccountant extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -35,7 +34,7 @@ public class ViewAccountant extends HttpServlet {
 		out.println("<table class='table table-bordered table-striped'>");
 		out.print("<tr><th>Id</th><th>Firstname</th><th>Lastname</th><th>Email</th><th>Password</th><th>address</th><th>Role</th><th>Edit</th><th>Delete</th>");
 		for(AccountantBean bean:list){
-			out.print("<tr><td>"+bean.getId()+"</td><td>"+bean.getFirstname()+"</td><td>"+bean.getLastname()+"</td><td>"+bean.getEmail()+"</td><td>"+bean.getPassword()+"</td><td>"+bean.getAddress()+"</td><td>"+bean.getRole()+"</td><td><a href='EditAccountantForm?id="+bean.getId()+"'>Edit</a></td><td><a href='DeleteAccountant?id="+bean.getId()+"'>Delete</a></td></tr>");
+			out.print("<tr><td>"+bean.getId()+"</td><td>"+bean.getFirstname()+"</td><td>"+bean.getLastname()+"</td><td>"+bean.getEmail()+"</td><td>"+bean.getPassword()+"</td><td>"+bean.getAddress()+"</td><td>"+Role.findByValue(bean.getRole())+"</td><td><a href='EditAccountantForm?id="+bean.getId()+"'>Edit</a></td><td><a href='DeleteAccountant?id="+bean.getId()+"'>Delete</a></td></tr>");
 		}
 		out.println("</table>");
 			

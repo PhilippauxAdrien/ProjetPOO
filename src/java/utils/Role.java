@@ -26,4 +26,13 @@ public enum Role {
     public String getValue() {
         return value;
     }
+    
+    public static Role findByValue(String role){
+    for(Role r : values()){
+        if( r.getValue().equals(role)){
+            return r;
+        }
+    }
+    return null;
+}
 }
