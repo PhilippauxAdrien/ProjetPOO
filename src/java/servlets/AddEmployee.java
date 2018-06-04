@@ -1,5 +1,6 @@
 
 package servlets;
+import beans.EmployeeBean;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -9,28 +10,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import beans.StudentBean;
-import dao.StudentDao;
+import dao.EmployeeDao;
 
-import java.sql.*;
 @WebServlet("/AddEmployee")
 public class AddEmployee extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
 		
-		String name=request.getParameter("name");
+		String firstname=request.getParameter("firstname");
+                String lastname=request.getParameter("lastname");
 	 	String email=request.getParameter("email");
-		String sex=request.getParameter("sex");
-		String course=request.getParameter("course");
-		int fee=Integer.parseInt(request.getParameter("fee"));
-		int paid=Integer.parseInt(request.getParameter("paid"));
-		int due=Integer.parseInt(request.getParameter("due"));
 		String address=request.getParameter("address");
-		String contact=request.getParameter("contact");
+		String password=request.getParameter("password");
 		
-		StudentBean bean=new StudentBean(name, email, sex, course, fee, paid, due, address, contact);
-		int status=StudentDao.save(bean);
+		EmployeeBean bean=new EmployeeBean(firstname, lastname, email, password, address);
+		int status=EmployeeDao.save(bean);
 		out.println("<!DOCTYPE html>");
 		out.println("<html>");
 		out.println("<head>");
@@ -42,8 +37,11 @@ public class AddEmployee extends HttpServlet {
 		request.getRequestDispatcher("navaccountant.html").include(request, response);
 		out.println("<div class='container'>");
 		
-		out.println("Employee is added successfully!");
-		
+                if(status >0)
+                    out.println("Employee is added successfully!");
+		else
+                    out.println("Something went wrong... ");
+                
 		request.getRequestDispatcher("AddEmployeeForm.html").include(request, response);
 		out.println("</div>");
 		request.getRequestDispatcher("footer.html").include(request, response);

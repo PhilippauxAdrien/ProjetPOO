@@ -1,5 +1,6 @@
 package servlets;
 
+import beans.EmployeeBean;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -9,16 +10,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import beans.StudentBean;
-import dao.StudentDao;
+import dao.EmployeeDao;
+import utils.Role;
 @WebServlet("/SearchEmployee")
 public class SearchEmployee extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
-		String srollno=request.getParameter("rollno");
-		int rollno=Integer.parseInt(srollno);
-		StudentBean bean=StudentDao.getRecordByRollno(rollno);
+		String query=request.getParameter("query");
+		
+		EmployeeBean bean=EmployeeDao.getRecordByLastName(query);
 		out.println("<!DOCTYPE html>");
 		out.println("<html>");
 		out.println("<head>");
@@ -33,17 +34,18 @@ public class SearchEmployee extends HttpServlet {
 	
 		out.println("<h1>Search Employee</h1>");
 		
-		if(bean.getRollno()>0){
-		out.println("<table class='table table-bordered table-striped'>");
-		out.print("<tr><td>Rollno:</td><td>"+bean.getRollno()+"</td></tr>");
-		out.print("<tr><td>Name:</td><td>"+bean.getName()+"</td></tr>");
-		out.print("<tr><td>Email:</td><td>"+bean.getEmail()+"</td></tr>");
-		out.print("<tr><td>Sex:</td><td>"+bean.getSex()+"</td></tr>");
-		out.print("<tr><td>Course:</td><td>"+bean.getCourse()+"</td></tr>");
-		out.print("<tr><td>Fee:</td><td>"+bean.getFee()+"</td></tr>");
-		out.print("</table>");
+		if(bean != null && bean.getId()>0){
+                    out.println("<table class='table table-bordered table-striped'>");
+                    out.print("<tr><td>Id:</td><td>"+bean.getId()+"</td></tr>");
+                    out.print("<tr><td>Firstname:</td><td>"+bean.getFirstname()+"</td></tr>");
+                    out.print("<tr><td>Lastname:</td><td>"+bean.getLastname()+"</td></tr>");
+                    out.print("<tr><td>Email:</td><td>"+bean.getEmail()+"</td></tr>");
+                    out.print("<tr><td>Password:</td><td>"+bean.getPassword()+"</td></tr>");
+                    out.print("<tr><td>Address:</td><td>"+bean.getAddress()+"</td></tr>");
+                    out.print("<tr><td>Role:</td><td>"+Role.findByValue(bean.getRole())+"</td></tr>");
+                    out.print("</table>");
 		}else{
-			out.println("<p>Sorry, No Record found for "+rollno+"</p>");
+			out.println("<p>Sorry, No Record found for query '"+query+"'</p>");
 		}
 		
 		out.println("</div>");

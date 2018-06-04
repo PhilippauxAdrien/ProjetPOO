@@ -1,5 +1,7 @@
 package beans;
 
+import utils.Role;
+
 /**
  *
  * @author adrien
@@ -14,17 +16,17 @@ public class EmployeeBean {
         // TODO Auto-generated constructor stub
     }
 
-    public EmployeeBean(String firstname, String lastname, String email, String password, String address, String role) {
+    public EmployeeBean(String firstname, String lastname, String email, String password, String address) {
         super();
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
         this.password = password;
         this.address = address;
-        this.role = role;
+        this.role = Role.EMPLOYEE.getValue();
     }
 
-     public EmployeeBean(int id, String firstname, String lastname, String email, String password, String address, String role) {
+     public EmployeeBean(int id, String firstname, String lastname, String email, String password, String address) {
         super();
         this.id = id;
         this.firstname = firstname;
@@ -32,7 +34,7 @@ public class EmployeeBean {
         this.email = email;
         this.password = password;
         this.address = address;
-        this.role = role;
+        this.role = Role.EMPLOYEE.getValue();
     }
 
     public int getId() {

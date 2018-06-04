@@ -1,5 +1,7 @@
 package servlets;
 
+import beans.EmployeeBean;
+import dao.EmployeeDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -9,27 +11,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import beans.StudentBean;
-import dao.StudentDao;
+
 @WebServlet("/EditEmployee")
 public class EditEmployee extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
 		
-		int rollno=Integer.parseInt(request.getParameter("rollno"));
-		String name=request.getParameter("name");
+		int id=Integer.parseInt(request.getParameter("id"));
+		String firstname=request.getParameter("firstname");
+                String lastname=request.getParameter("lastname");
 	 	String email=request.getParameter("email");
-		String sex=request.getParameter("sex");
-		String course=request.getParameter("course");
-		int fee=Integer.parseInt(request.getParameter("fee"));
-		int paid=Integer.parseInt(request.getParameter("paid"));
-		int due=Integer.parseInt(request.getParameter("due"));
 		String address=request.getParameter("address");
-		String contact=request.getParameter("contact");
-		
-		StudentBean bean=new StudentBean(rollno,name, email, sex, course, fee, paid, due, address, contact);
-		int status=StudentDao.update(bean);
+		String password=request.getParameter("password");
+				
+		EmployeeBean bean=new EmployeeBean(id, firstname, lastname, email, password, address);
+		int status=EmployeeDao.update(bean);
 		response.sendRedirect("ViewEmployee");
 		
 		out.close();

@@ -1,5 +1,7 @@
 package servlets;
 
+import beans.EmployeeBean;
+import dao.EmployeeDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -9,15 +11,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import beans.StudentBean;
-import dao.StudentDao;
 @WebServlet("/EditEmployeeForm")
 public class EditEmployeeForm extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out=response.getWriter();
-		String srollno=request.getParameter("rollno");
-		int rollno=Integer.parseInt(srollno);
-		StudentBean bean=StudentDao.getRecordByRollno(rollno);
+		String sid=request.getParameter("id");
+		int id=Integer.parseInt(sid);
+		EmployeeBean bean=EmployeeDao.getRecordById(id);
 		
 		out.println("<!DOCTYPE html>");
 		out.println("<html>");
@@ -33,16 +33,12 @@ public class EditEmployeeForm extends HttpServlet {
 		out.print("<h1>Edit Employee Form</h1>");
 		out.print("<form action='EditEmployee' method='post'>");
 		out.print("<table>");
-		out.print("<tr><td><input type='hidden' name='rollno' value='"+bean.getRollno()+"'/></td></tr>");
-		out.print("<tr><td>Name:</td><td><input type='text' name='name' value='"+bean.getName()+"'/></td></tr>");
+		out.print("<tr><td><input type='hidden' name='id' value='"+bean.getId()+"'/></td></tr>");
+		out.print("<tr><td>Firstname:</td><td><input type='text' name='firstname' value='"+bean.getFirstname()+"'/></td></tr>");
+                out.print("<tr><td>Lastname:</td><td><input type='text' name='lastname' value='"+bean.getLastname()+"'/></td></tr>");
 		out.print("<tr><td>Email:</td><td><input type='email' name='email' value='"+bean.getEmail()+"'/></td></tr>");
-		out.print("<tr><td>Sex:</td><td><input type='text' name='sex' value='"+bean.getSex()+"'/></td></tr>");
-		out.print("<tr><td>Course:</td><td><input type='text' name='course' value='"+bean.getCourse()+"'/></td></tr>");
-		out.print("<tr><td>Fee:</td><td><input type='number' name='fee' value='"+bean.getFee()+"'/></td></tr>");
-		out.print("<tr><td>Paid:</td><td><input type='number' name='paid'  value='"+bean.getPaid()+"'/></td></tr>");
-		out.print("<tr><td>Due:</td><td><input type='number' name='due'  value='"+bean.getDue()+"'/></td></tr>");
-		out.print("<tr><td>Address:</td><td><textarea name='address' style='width:300px;height:100px;'>"+bean.getAddress()+"</textarea></td></tr>");
-		out.print("<tr><td>Contact No:</td><td><input type='text' name='contact' value='"+bean.getContact()+"'/></td></tr>");
+		out.print("<tr><td>Password:</td><td><input type='password' name='password' value='"+bean.getPassword()+"'/></td></tr>");
+		out.print("<tr><td>Address:</td><td><input type='text' name='address' value='"+bean.getAddress()+"'/></td></tr>");
 		out.print("<tr><td colspan='2' align='center'><input type='submit' value='Update Employee'/></td></tr>");
 		out.print("</table>");
 		out.print("</form>");

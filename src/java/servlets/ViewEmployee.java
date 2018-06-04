@@ -1,5 +1,6 @@
 package servlets;  
 
+import beans.EmployeeBean;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -10,8 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import beans.StudentBean;
-import dao.StudentDao;
+import dao.EmployeeDao;
+import utils.Role;
 @WebServlet("/ViewEmployee")
 public class ViewEmployee extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,11 +31,11 @@ public class ViewEmployee extends HttpServlet {
 		
 		out.print("<h1>View Employees</h1>");
 	
-		List<StudentBean> list=StudentDao.getAllRecords();
+		List<EmployeeBean> list=EmployeeDao.getAllRecords();
 		out.println("<table class='table table-bordered table-striped'>");
-		out.print("<tr><th>Rollno</th><th>Name</th><th>Email</th><th>Sex</th><th>Course</th><th>Fee</th><th>paid</th><th>due</th><th>address</th><th>contact</th><th>Edit</th><th>Delete</th>");
-		for(StudentBean bean:list){
-			out.print("<tr><td>"+bean.getRollno()+"</td><td>"+bean.getName()+"</td><td>"+bean.getEmail()+"</td><td>"+bean.getSex()+"</td><td>"+bean.getCourse()+"</td><td>"+bean.getFee()+"</td><td>"+bean.getPaid()+"</td><td>"+bean.getDue()+"</td><td>"+bean.getAddress()+"</td><td>"+bean.getContact()+"</td><td><a href='EditStudentForm?rollno="+bean.getRollno()+"'>Edit</a></td><td><a href='DeleteStudent?rollno="+bean.getRollno()+"'>Delete</a></td></tr>");
+		out.print("<tr><th>id</th><th>Firstname</th><th>Lastname</th><th>Email</th><th>Password</th><th>Address</th><th>Role</th><th>Edit</th><th>Delete</th>");
+		for(EmployeeBean bean:list){
+			out.print("<tr><td>"+bean.getId()+"</td><td>"+bean.getFirstname()+"</td><td>"+bean.getLastname()+"</td><td>"+bean.getEmail()+"</td><td>"+bean.getPassword()+"</td><td>"+bean.getAddress()+"</td><td>"+Role.findByValue(bean.getRole())+"</td><td><a href='EditEmployeeForm?id="+bean.getId()+"'>Edit</a></td><td><a href='DeleteEmployee?id="+bean.getId()+"'>Delete</a></td></tr>");
 		}
 		out.println("</table>");
 		out.println("</div>");
