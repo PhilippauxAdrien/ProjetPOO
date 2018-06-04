@@ -13,42 +13,55 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/EditEmployeeForm")
 public class EditEmployeeForm extends HttpServlet {
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PrintWriter out=response.getWriter();
-		String sid=request.getParameter("id");
-		int id=Integer.parseInt(sid);
-		EmployeeBean bean=EmployeeDao.getRecordById(id);
-		
-		out.println("<!DOCTYPE html>");
-		out.println("<html>");
-		out.println("<head>");
-		out.println("<title>Edit Employee Form</title>");
-		out.println("<link rel='stylesheet' href='resources/bootstrap.min.css'/>");
-		out.println("<link rel='stylesheet' href='style.css'/>");
-		out.println("</head>");
-		out.println("<body>");
-		request.getRequestDispatcher("navaccountant.html").include(request, response);
-		out.println("<div class='container'>");
-		
-		out.print("<h1>Edit Employee Form</h1>");
-		out.print("<form action='EditEmployee' method='post'>");
-		out.print("<table>");
-		out.print("<tr><td><input type='hidden' name='id' value='"+bean.getId()+"'/></td></tr>");
-		out.print("<tr><td>Firstname:</td><td><input type='text' name='firstname' value='"+bean.getFirstname()+"'/></td></tr>");
-                out.print("<tr><td>Lastname:</td><td><input type='text' name='lastname' value='"+bean.getLastname()+"'/></td></tr>");
-		out.print("<tr><td>Email:</td><td><input type='email' name='email' value='"+bean.getEmail()+"'/></td></tr>");
-		out.print("<tr><td>Password:</td><td><input type='password' name='password' value='"+bean.getPassword()+"'/></td></tr>");
-		out.print("<tr><td>Address:</td><td><input type='text' name='address' value='"+bean.getAddress()+"'/></td></tr>");
-		out.print("<tr><td colspan='2' align='center'><input type='submit' value='Update Employee'/></td></tr>");
-		out.print("</table>");
-		out.print("</form>");
-		
-		out.println("</div>");
-		request.getRequestDispatcher("footer.html").include(request, response);
-		out.println("</body>");
-		out.println("</html>");
-				
-		out.close();
-	}
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        PrintWriter out = response.getWriter();
+        String sid = request.getParameter("id");
+        int id = Integer.parseInt(sid);
+        EmployeeBean bean = EmployeeDao.getRecordById(id);
+
+        out.println("<!DOCTYPE html>");
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<title>Edit Employee Form</title>");
+        out.println("<link rel='stylesheet' href='resources/bootstrap.min.css'/>");
+        out.println("<link rel='stylesheet' href='style.css'/>");
+        out.println("</head>");
+        out.println("<body>");
+        request.getRequestDispatcher("navaccountant.html").include(request, response);
+        out.println("<div class='container'>");
+
+        out.print("<h1>Edit Employee Form</h1>");
+
+        out.println("<form action=\"EditEmployee\" method=\"post\">");
+        out.println(
+                "<div class=\"form-group\"><input type=\"hidden\" name=\"id\" value=\"" + bean.getId() + "\" required></div>");
+        out.println(
+                "<div class=\"form-group\"><label for=\"inputFirstname\">Firstname</label><input type=\"text\" class=\"form-control\" id=\"inputFirstname\" name=\"firstname\" value=\""
+                + bean.getFirstname() + "\" required></div>");
+
+        out.println(
+                "<div class=\"form-group\"><label for=\"inputLastname\">Lastname</label><input type=\"text\" class=\"form-control\" id=\"inputLastname\" name=\"lastname\" value=\""
+                + bean.getLastname() + "\" required></div>");
+        out.println(
+                "<div class=\"form-group\"><label for=\"inputPassword\">Password</label><input type=\"password\" class=\"form-control\" id=\"inputPassword\" name=\"password\" value=\""
+                + bean.getPassword() + "\" required></div>");
+        out.println(
+                "<div class=\"form-group\"><label for=\"inputEmail\">Email</label><input type=\"email\" class=\"form-control\" id=\"inputEmail\" name=\"email\" value=\""
+                + bean.getEmail() + "\" required></div>");
+        out.println(
+                "<div class=\"form-group\"><label for=\"inputAddress\">Address</label><textarea class=\"form-control\" name=\"address\" id=\"inputAddress\" rows=\"3\">"
+                + bean.getAddress() + "</textarea></div>");
+        out.println("<button type=\"submit\" class=\"btn btn-default\">Update Employee</button>");
+
+        out.println("</form>");
+
+        out.println("</div>");
+        request.getRequestDispatcher("footer.html").include(request, response);
+        out.println("</body>");
+        out.println("</html>");
+
+        out.close();
+    }
 
 }
