@@ -32,8 +32,8 @@ public static int save(EmployeeBean bean){
         }
 	return status;
 }
-public static boolean validate(String email,String password){
-	boolean status=false;
+public static int validate(String email,String password){
+	int id=0;
 	try{
 		Connection con=DB.getCon();
 		PreparedStatement ps=con.prepareStatement("select * from user where email=? and password=? and role=?");
@@ -42,12 +42,14 @@ public static boolean validate(String email,String password){
                 ps.setString(3, Role.EMPLOYEE.getValue());
                 System.out.println(ps.toString());
 		ResultSet rs=ps.executeQuery();
-		status=rs.next();
+		if(rs.next()){
+                    id = rs.getInt(1);
+                }
 		con.close();
 	}catch(Exception ex){
             System.out.println(ex);
         }
-	return status;
+	return id;
 }
 public static int update(EmployeeBean bean){
 	int status=0;

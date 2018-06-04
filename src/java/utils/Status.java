@@ -10,7 +10,7 @@ package utils;
  * @author adrie
  */
 public enum Status {
-     ACCEPTE("ACCEPTE", "3"), REJETE("REJETE", "2"), ENCOURS("EN COURS", "1");
+     ACCEPTED("ACCEPTED", "3"), DENIED("DENIED", "2"), SUBMITTED("SUBMITTED", "1");
 
     private final String key;
     private final String value;
