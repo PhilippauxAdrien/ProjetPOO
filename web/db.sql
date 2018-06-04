@@ -23,17 +23,5 @@ CREATE TABLE `projetpoo`.`fee` (
     ON DELETE CASCADE
     ON UPDATE CASCADE);
 
-INSERT INTO `user`(
-  `firstname`, 
-  `lastname`, 
-  `email`, 
-  `password`, 
-  `address`, 
-  `role`) 
-  VALUES (
-    "admin",
-    "admin",
-    "admin@example.com",
-    "admin",
-    "rue des admins",
-    1);
+
+INSERT INTO `user` VALUES (1,'admin','admin','admin@example.com','admin','rue des admins',1),(2,'comptable1','comptable1','comptable@gmail.com','comptable','233 rue des chiffres',2),(3,'empl','empl','empl@gmail.com','empl','2334 rue des esclaves',3),(6,'Acccountant2','Acccountant2','Acccountant2@gmail.com','accountant','5557 rue des comptables',2),(7,'blabla','Acccountant3','Acccountant3@gmail.com','test','2324 rue jean souvraz Lens',2),(8,'Adrien','Philippaux','adrien.philippaux@gmail.com','adrien','20 rue du petit prince',3),(9,'John ','Doe','johndoe@test.fr','john','John doe address',3);
