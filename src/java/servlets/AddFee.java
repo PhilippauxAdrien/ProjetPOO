@@ -41,8 +41,8 @@ public class AddFee extends HttpServlet {
 		
 		String amount=request.getParameter("amount");
                 String sdate=request.getParameter("date");
-	 	
-                SimpleDateFormat sdf1 = new SimpleDateFormat("dd-mm-yyyy");
+	 	     System.out.println("date : " + sdate);
+                SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
                 java.util.Date date;
                 java.sql.Date sqlDate = null;
                 try {
