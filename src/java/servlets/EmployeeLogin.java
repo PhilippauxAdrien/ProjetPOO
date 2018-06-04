@@ -30,10 +30,11 @@ public class EmployeeLogin extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		System.out.println("connexion en tant que : " + email + " password: " + password);
-		boolean status = EmployeeDao.validate(email, password);
-		if (status) {
+		int id = EmployeeDao.validate(email, password);
+		if (id > 0) {
 			HttpSession session = request.getSession();
 			session.setAttribute("employee", "true");
+                        session.setAttribute("idemployee", id);
 			request.getRequestDispatcher("employeehome.html").include(request, response);
 		} else {
 			out.println("<h1>Employee Login Form</h1>");
