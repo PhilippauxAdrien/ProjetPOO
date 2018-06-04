@@ -1,16 +1,8 @@
 <h1>Search Employee Form</h1>
 <form action="SearchEmployee" method="post">
-  <table>
-    <tr>
-      <td>Lastname or Firstname : </td>
-      <td>
-        <input type="text" name="query" required/>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2" align="center">
-        <input type="submit" value="Search Employee" />
-      </td>
-    </tr>
-  </table>
+  <div class="form-group">
+    <label for="inputName">Firstname or Lastname</label>
+    <input type="text" class="form-control" id="inputName" name="query" required>
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
 </form>
