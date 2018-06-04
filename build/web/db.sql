@@ -10,7 +10,7 @@ CREATE TABLE `projetpoo`.`user` (
   UNIQUE INDEX `email_UNIQUE` (`email` ASC));
 
 CREATE TABLE `projetpoo`.`fee` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL auto_increment,
   `amount` DOUBLE NOT NULL,
   `date` DATETIME NULL,
   `iduser` INT NOT NULL,
