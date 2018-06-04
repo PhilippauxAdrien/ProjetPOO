@@ -22,3 +22,18 @@ CREATE TABLE `projetpoo`.`fee` (
     REFERENCES `projetpoo`.`user` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE);
+
+INSERT INTO `user`(
+  `firstname`, 
+  `lastname`, 
+  `email`, 
+  `password`, 
+  `address`, 
+  `role`) 
+  VALUES (
+    "admin",
+    "admin",
+    "admin@example.com",
+    "admin",
+    "rue des admins",
+    1);
